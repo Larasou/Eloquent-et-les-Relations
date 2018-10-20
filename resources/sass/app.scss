@@ -1,0 +1,13 @@
+
+// Variables
+@import 'variables';
+
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.bg-navigation {
+    background-image: radial-gradient(circle at 150px 100%, #601d7a, #8b2ab5);
+}
