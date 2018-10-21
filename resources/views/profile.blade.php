@@ -10,7 +10,7 @@
         </h1>
 
        <div class="flex justify-center items-center">
-           <div class="mt-5 w-3/5 text-xl">
+           <div class="mt-5 w-4/5 text-xl">
                <h3 class="p-3">
                    Site web: {{ $user->profile->website }}
                </h3>
