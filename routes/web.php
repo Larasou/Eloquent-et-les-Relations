@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', 'ProfileController@index');
-Route::get('profile/{user}', 'ProfileController@show');
+# Les articles
+Route::get('/', 'PostController@index')->name('posts');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts', 'PostController@store')->name('posts.store');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 
+/**
+ # Les profils
+ Route::get('/', 'ProfileController@index');
+ Route::get('profile/{user}', 'ProfileController@show');
+*/

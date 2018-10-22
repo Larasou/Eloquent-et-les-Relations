@@ -14,7 +14,14 @@ class UsersTableSeeder extends Seeder
         $users = factory('App\User', 10)->create();
 
         $users->each(function ($user) {
-                 $user->profile(factory('App\Profile', 1)->create([
+             $user->profile(factory('App\Profile', 1)->create([
+                 'user_id' => $user->id
+             ]));
+        });
+
+
+        $users->each(function ($user) {
+                 $user->posts(factory('App\Post', 25)->create([
                      'user_id' => $user->id
                  ]));
         });

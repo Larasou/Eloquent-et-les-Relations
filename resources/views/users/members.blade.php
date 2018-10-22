@@ -1,9 +1,9 @@
-@extends('layouts/default')
+@extends('layouts.default')
 
 @section('content')
     <div class="my-10 max-w-3xl mx-auto">
         <h1 class="text-center">
-           Les profiles
+           Les profils
         </h1>
 
         <div class="mt-5 flex flex-col items-center justify-center">

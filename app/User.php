@@ -26,10 +26,20 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
+    ];//
 
-    // $user->profile->google
-    public function profile() {
+    /** Un utilisateur possède un profil
+     * Ex: $user->profile->firstname
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
         return $this->hasOne(Profile::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
