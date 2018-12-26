@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Tag extends Model
 {
     protected $guarded = [];
 
@@ -13,17 +13,12 @@ class Post extends Model
         parent::boot();
 
         self::deleting(function ($model) {
-            $model->tags()->detach();
+            $model->posts()->detach();
         });
     }
 
-    public function user()
+    public function posts() 
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Post::class);
     }
 }

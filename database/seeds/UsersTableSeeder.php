@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $countries = factory('App\Country', 5)->create();
+        factory('App\Tag', 5)->create();
 
         $countries->each(function ($country) {
             $cities = factory('App\City', 5)->create([
