@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Tutorial;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class TutorialController extends Controller
 {
     public function index()
     {
-        return view('posts.index', ['posts' => Post::latest()->get()]);
+        return view('tutorials.index', ['tutorials' => Tutorial::latest()->get()]);
     }
 
     public function create()
     {
-        return view('posts.create');
+        return view('tutorials.create');
     }
 
     public function store(Request $request)
@@ -30,24 +30,23 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function show(Post $post)
+    public function show(Tutorial $tutorial)
     {
-        return view('posts.show', [
-            'post' => $post,
-            //'posts' => $post->user->posts()->latest()->get()
+        return view('tutorials.show', [
+            'tutorial' => $tutorial,
+            //'tutorials' => $tutorial->user->posts()->latest()->get()
         ]);
     }
 
-    public function addComment(Post $post, Request $request)
+    public function addComment(Tutorial $tutorial, Request $request)
     {
         $request->validate(['body' => 'required']);
 
-        $post->comments()->create([
+        $tutorial->comments()->create([
             'user_id' => 1,
             'body' => $request->body,
         ]);
 
         return back();
     }
-
 }

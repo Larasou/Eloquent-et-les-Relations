@@ -20,11 +20,11 @@
             </a>
         </div>
         <div class="text-lg">
-            <a href="/news" class="no-underline text-white hover:text-grey">
+            <a href="/" class="no-underline text-white hover:text-grey">
                 Actualités
             </a>
-            <a href="/blog" class="ml-2 no-underline text-white hover:text-grey">
-                Blog
+            <a href="/tutorials" class="ml-2 no-underline text-white hover:text-grey">
+                Tutoriels
             </a>
             <a href="/contact" class="ml-2 no-underline text-white hover:text-grey">
                 Contact

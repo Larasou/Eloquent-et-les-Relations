@@ -3,28 +3,27 @@
 @section('content')
     <div class="my-10 max-w-3xl mx-auto">
         <h1 class="text-center">
-            {{ $post->name }}
+            {{ $tutorial->name }}
         </h1>
 
         <div class="mt-5 flex flex-col">
             <div class="mt-3 text-lg">
-                {!! $post->body !!}
+                {!! $tutorial->body !!}
             </div>
 
             <div class="mt-5 text-grey-darker">
                 Publié par
                 <a href="" class="font-bold text-blue-dark no-underline">
-                    {{ $post->user->name }}
+                    {{ $tutorial->user->name }}
                 </a>
             </div>
         </div>
 
-
         <div class="mt-5 flex flex-col">
             <h3 class="text-2xl">
-                {{ $post->comments->count() }} {{ str_plural('Commentaire', $post->comments->count()) }}
+                {{ $tutorial->comments->count() }} {{ str_plural('Commentaire', $tutorial->comments->count()) }}
             </h3>
-            <form action="{{ route('posts.addcomment', $post) }}" method="post" class="my-5">
+            <form action="{{ route('tutorials.addcomment', $tutorial) }}" method="post" class="my-5">
                 @csrf
                 <textarea name="body" id="body"
                           rows="5"
@@ -37,7 +36,7 @@
                 </button>
             </form>
 
-            @foreach($post->comments()->latest()->get() as $comment)
+            @foreach($tutorial->comments()->latest()->get() as $comment)
                 <div class="my-5 border-2 border-grey-lighter rounded-lg">
                     <div class="text-lg">
                         {!! $comment->body !!}
@@ -46,12 +45,13 @@
                     <div class="mt-3 text-grey-darker">
                         Publié par
                         <a href="" class="font-bold text-blue-dark no-underline">
-                            {{ $post->user->name }}
+                            {{ $tutorial->user->name }}
                         </a>
                     </div>
                 </div>
             @endforeach
         </div>
+
     </div>
 
 @stop

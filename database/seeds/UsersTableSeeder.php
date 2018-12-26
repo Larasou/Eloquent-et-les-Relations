@@ -25,16 +25,36 @@ class UsersTableSeeder extends Seeder
                 ]);
 
                 $users->each(function ($user) {
-                    $user->profile(factory('App\Profile', 1)->create([
+                    factory('App\Profile', 1)->create([
                         'user_id' => $user->id
-                    ]));
+                    ]);
                 });
 
 
                 $users->each(function ($user) {
-                    $user->posts(factory('App\Post', 25)->create([
+                    $posts = factory('App\Post', 10)->create([
                         'user_id' => $user->id
-                    ]));
+                    ]);
+
+                    $posts->each(function ($post) use ($user) {
+                        factory('App\Comment', 7)->create([
+                            'user_id' => \App\User::get()->random()->id,
+                            'commentable_id' => $post->id,
+                            'commentable_type' => get_class($post),
+                        ]);
+                    });
+
+                    $tutorials = factory('App\Tutorial', 10)->create([
+                        'user_id' => $user->id
+                    ]);
+
+                    $tutorials->each(function ($tutorial) use ($user) {
+                        factory('App\Comment', 7)->create([
+                            'user_id' => \App\User::get()->random()->id,
+                            'commentable_id' => $tutorial->id,
+                            'commentable_type' => get_class($tutorial),
+                        ]);
+                    });
                 });
             });
         });
