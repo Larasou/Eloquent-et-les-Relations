@@ -17,6 +17,14 @@
                     {{ $tutorial->user->name }}
                 </a>
             </div>
+
+            <div class="my-5">
+                @foreach($tutorial->tags as $tag)
+                    <a href="#" class="mr-2 no-underline px-4 py-1 border border-purple text-purple rounded-full">
+                        {{ $tag->name }}
+                    </a>
+                @endforeach
+            </div>
         </div>
 
         <div class="mt-5 flex flex-col">

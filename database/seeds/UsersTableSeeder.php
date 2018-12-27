@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
 
 
                 $users->each(function ($user) {
-                    $posts = factory('App\Post', 10)->create([
+                    $posts = factory('App\Post', 3)->create([
                         'user_id' => $user->id
                     ]);
 
@@ -42,9 +42,11 @@ class UsersTableSeeder extends Seeder
                             'commentable_id' => $post->id,
                             'commentable_type' => get_class($post),
                         ]);
+
+                       $post->tags()->sync(array_random([1, 2, 3, 4, 5], 3));
                     });
 
-                    $tutorials = factory('App\Tutorial', 10)->create([
+                    $tutorials = factory('App\Tutorial', 3)->create([
                         'user_id' => $user->id
                     ]);
 
@@ -54,6 +56,8 @@ class UsersTableSeeder extends Seeder
                             'commentable_id' => $tutorial->id,
                             'commentable_type' => get_class($tutorial),
                         ]);
+
+                        $tutorial->tags()->sync(array_random([1, 2, 3, 4, 5], 3));
                     });
                 });
             });

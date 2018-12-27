@@ -13,12 +13,17 @@ class Tag extends Model
         parent::boot();
 
         self::deleting(function ($model) {
-            $model->posts()->detach();
+            //$model->posts()->detach();
         });
     }
 
     public function posts() 
     {
-        return $this->belongsToMany(Post::class);
+        return $this->morphedByMany(Post::class, 'taggable');
+    }
+
+    public function tutorials()
+    {
+        return $this->morphedByMany(Tutorial::class, 'taggable');
     }
 }
